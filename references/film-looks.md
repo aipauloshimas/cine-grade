@@ -50,6 +50,14 @@ to a stronger intensity — not the same emotional mood, and not merely the
 same temperature: pastel peach and dense amber are different families. A
 stronger film with a different dominant hue is a different vibe.
 
+Palette families (match within a row, never across):
+- **Pastel peach / pink / cream, high-key** — Her, Spring Breakers day, Euphoria (pushed to saturated pink/magenta)
+- **Dense amber / orange, low-key or hazy** — Blade Runner 2049 Vegas, Mad Max orange side
+- **Cyan sky + amber skin, hard daylight** — Pulp Fiction
+- **Cool blue / violet night** — Moonlight, Blade Runner 2049 interiors
+- **Sickly green** — The Matrix, Se7en
+- **Neon magenta + cyan** — Drive, Spring Breakers night
+
 | Soft look asked for | Why it's weak | Stronger, same vibe |
 |---|---|---|
 | **Her** (pastel peach/cream/coral, high-key) | close-up window light is already soft and warm | Euphoria (saturated pink/magenta/peach as light, close-up skin), Spring Breakers daytime (candy peach-pink, sun-blown highlights), a "pushed" Her (heavy peach flood, lifted blacks, blown window) — NOT BR2049 amber or Mad Max (dark dense orange, not pastel), NOT Pulp Fiction (cyan) |

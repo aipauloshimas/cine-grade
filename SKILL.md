@@ -68,9 +68,16 @@ edit is forbidden from regenerating any physical element.
   film is gentle (Her, Amélie-adjacent warmth, low-contrast naturalism) or
   merely warms/cools what the take already has, say plainly: "this look is
   soft — on this take the before/after will be weak." Then suggest 2–3
-  STRONGER films of the same color family (see the delta table in
-  `film-looks.md`) and ASK which the user wants: stay soft, or go strong.
-  Do not silently deliver a weak reveal; do not silently swap the film.
+  STRONGER films of the SAME PALETTE and ASK which the user wants: stay
+  soft, or go strong. Do not silently deliver a weak reveal; do not
+  silently swap the film.
+- **Compare palettes, not temperatures.** "Same vibe" = same dominant hues
+  at the same lightness/saturation register (pastel peach-pink, dense amber,
+  cool blue-violet, sickly green, orange/teal) — never just "warm ↔ warm" or
+  "cool ↔ cool". Her (pastel peach, high-key) is NOT the family of Blade
+  Runner 2049 amber (dark dense orange) even though both are warm; its
+  stronger siblings are Euphoria and Spring Breakers (saturated pink/peach
+  light). Name the palette in words before proposing alternatives.
 
 ## Workflow
 1. **Inputs.** Target film/series (name or a still to analyze); footage
@@ -109,3 +116,5 @@ edit is forbidden from regenerating any physical element.
 - The prompt never names an element that is actually in the frame.
 - The film only warms or cools the take's existing light and you haven't
   warned that the reveal will be weak.
+- You matched a "stronger" alternative by temperature (warm→warm) instead
+  of by palette (pastel peach → saturated pink/peach).

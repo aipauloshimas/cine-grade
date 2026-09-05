@@ -28,3 +28,4 @@ the preservation block.
 | "A reference still will make it more accurate" | It transfers composition and identity along with the look. Bake the 8 axes into text instead. |
 | "This film needs its set but a tint will be close enough" | The user will get a pink wall and lose trust. Redirect to a light-based look. |
 | "The before looks boring — add a lamp" | Boring is the point. Give it geometry (framing quote), not light. |
+| "Both are warm, so it's the same vibe" | Temperature is not palette. Pastel peach and dense amber are different families; propose siblings by hue AND register. |

@@ -68,7 +68,7 @@ edit is forbidden from regenerating any physical element.
   film is gentle (Her, Amélie-adjacent warmth, low-contrast naturalism) or
   merely warms/cools what the take already has, say plainly: "this look is
   soft — on this take the before/after will be weak." Then suggest 2–3
-  STRONGER films with the same vibe (see the delta table in
+  STRONGER films of the same color family (see the delta table in
   `film-looks.md`) and ASK which the user wants: stay soft, or go strong.
   Do not silently deliver a weak reveal; do not silently swap the film.
 

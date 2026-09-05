@@ -44,16 +44,18 @@ signature to the canvas before switching films.
 ## Delta check: soft looks make weak reveals
 A grade that keeps the take's color family (warm window light → warmer
 window light) changes little on screen. Warn, then offer stronger films of
-the same vibe and let the user choose. "Same vibe" means the same MOOD
-(intimate, melancholic, cool, oppressive) — not merely the same color
-temperature. Warm-and-tender and warm-and-hard are different vibes.
+the same vibe and let the user choose. "Same vibe" means the same COLOR
+FAMILY (warm peach/amber, cool blue, green, orange/teal) pushed to a
+stronger intensity — not the same emotional mood. A stronger film with a
+different dominant hue (Her → Pulp Fiction's cyan) is a different vibe.
 
 | Soft look asked for | Why it's weak | Stronger, same vibe |
 |---|---|---|
-| **Her** (cream/peach, intimate, melancholic) | close-up window light is already soft and warm | Blade Runner 2049 amber (warm solitude, enveloping haze), Lost in Translation night (romantic melancholy, warm practicals vs blue shadow), a "pushed" Her (heavy peach flood, lifted blacks, blown window) — NOT Pulp Fiction: same color family, opposite mood |
-| Naturalistic dramas (Nomadland, Marriage Story) | the look IS natural light | Moonlight (blue-violet night), Se7en (bleach bypass) |
-| Warm nostalgic (Call Me by Your Name, Amélie-adjacent) | warms what is already warm | Blade Runner 2049 amber, Mad Max orange/teal |
-| Cool minimal (Ex Machina interiors) | cools a neutral room slightly | The Matrix green, Blade Runner 2049 cyan interior |
+| **Her** (cream/peach, no blue) | close-up window light is already soft and warm | Blade Runner 2049 amber (same warm no-blue family, far denser haze), Mad Max orange side (blown warm saturation), a "pushed" Her (heavy peach flood, lifted blacks, blown window) — NOT Pulp Fiction: cyan-dominant, different family |
+| Naturalistic dramas (Nomadland, Marriage Story) | the look IS natural light — no dominant hue | pick by the take's canvas: Moonlight (blue), BR2049 (amber), Matrix (green) |
+| Warm nostalgic (Call Me by Your Name, Amélie-adjacent) | warms what is already warm | Blade Runner 2049 amber, Mad Max orange side |
+| Cool minimal (Ex Machina interiors, slight cyan) | cools a neutral room slightly | Blade Runner 2049 cyan interior, Moonlight blue-violet |
+| Muted green-grey (Se7en-lite, Fincher naturalism) | subtle cast on a grey room | The Matrix green, Se7en full bleach bypass |
 
 "Pushed" variants are allowed when the user chooses to stay: push every
 axis (saturation, bloom, lifted blacks, overexposure) while still changing

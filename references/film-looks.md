@@ -45,13 +45,14 @@ signature to the canvas before switching films.
 A grade that keeps the take's color family (warm window light → warmer
 window light) changes little on screen. Warn, then offer stronger films of
 the same vibe and let the user choose. "Same vibe" means the same COLOR
-FAMILY (warm peach/amber, cool blue, green, orange/teal) pushed to a
-stronger intensity — not the same emotional mood. A stronger film with a
-different dominant hue (Her → Pulp Fiction's cyan) is a different vibe.
+FAMILY (pastel peach/pink, warm amber, cool blue, green, orange/teal) pushed
+to a stronger intensity — not the same emotional mood, and not merely the
+same temperature: pastel peach and dense amber are different families. A
+stronger film with a different dominant hue is a different vibe.
 
 | Soft look asked for | Why it's weak | Stronger, same vibe |
 |---|---|---|
-| **Her** (cream/peach, no blue) | close-up window light is already soft and warm | Blade Runner 2049 amber (same warm no-blue family, far denser haze), Mad Max orange side (blown warm saturation), a "pushed" Her (heavy peach flood, lifted blacks, blown window) — NOT Pulp Fiction: cyan-dominant, different family |
+| **Her** (pastel peach/cream/coral, high-key) | close-up window light is already soft and warm | Euphoria (saturated pink/magenta/peach as light, close-up skin), Spring Breakers daytime (candy peach-pink, sun-blown highlights), a "pushed" Her (heavy peach flood, lifted blacks, blown window) — NOT BR2049 amber or Mad Max (dark dense orange, not pastel), NOT Pulp Fiction (cyan) |
 | Naturalistic dramas (Nomadland, Marriage Story) | the look IS natural light — no dominant hue | pick by the take's canvas: Moonlight (blue), BR2049 (amber), Matrix (green) |
 | Warm nostalgic (Call Me by Your Name, Amélie-adjacent) | warms what is already warm | Blade Runner 2049 amber, Mad Max orange side |
 | Cool minimal (Ex Machina interiors, slight cyan) | cools a neutral room slightly | Blade Runner 2049 cyan interior, Moonlight blue-violet |

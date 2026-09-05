@@ -63,6 +63,14 @@ edit is forbidden from regenerating any physical element.
 - **Canvas decides the film.** Sky/open space, side-lit shadow, close-up
   skin, sparse interior — the take's big repaintable area is matched to the
   film that repaints it (`take-design.md`).
+- **Delta check — warn when the look is soft.** The reveal is only as strong
+  as the distance between the take's own light and the film's look. If the
+  film is gentle (Her, Amélie-adjacent warmth, low-contrast naturalism) or
+  merely warms/cools what the take already has, say plainly: "this look is
+  soft — on this take the before/after will be weak." Then suggest 2–3
+  STRONGER films with the same vibe (see the delta table in
+  `film-looks.md`) and ASK which the user wants: stay soft, or go strong.
+  Do not silently deliver a weak reveal; do not silently swap the film.
 
 ## Workflow
 1. **Inputs.** Target film/series (name or a still to analyze); footage
@@ -99,3 +107,5 @@ edit is forbidden from regenerating any physical element.
 - The film needs its set to be recognized and you are trying anyway.
 - The raw take already has colored lights, costume or a graded look.
 - The prompt never names an element that is actually in the frame.
+- The film only warms or cools the take's existing light and you haven't
+  warned that the reveal will be weak.

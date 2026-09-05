@@ -41,6 +41,22 @@ signature to the canvas before switching films.
 | **In the Mood for Love** | patterned wallpaper, cheongsams, practical lamps; tungsten alone does not get there |
 | **Wes Anderson / Jeunet / Wong Kar-wai in general** | production-design auteurs — steer to a light-based look with the same mood |
 
+## Delta check: soft looks make weak reveals
+A grade that keeps the take's color family (warm window light → warmer
+window light) changes little on screen. Warn, then offer stronger films of
+the same vibe and let the user choose:
+
+| Soft look asked for | Why it's weak | Stronger, same vibe |
+|---|---|---|
+| **Her** (cream/peach) | close-up window light is already soft and warm | Pulp Fiction daylight (hard sun, cyan sky), Blade Runner 2049 amber (haze, silhouette), a "pushed" Her (heavy peach flood, lifted blacks, blown window) |
+| Naturalistic dramas (Nomadland, Marriage Story) | the look IS natural light | Moonlight (blue-violet night), Se7en (bleach bypass) |
+| Warm nostalgic (Call Me by Your Name, Amélie-adjacent) | warms what is already warm | Blade Runner 2049 amber, Mad Max orange/teal |
+| Cool minimal (Ex Machina interiors) | cools a neutral room slightly | The Matrix green, Blade Runner 2049 cyan interior |
+
+"Pushed" variants are allowed when the user chooses to stay: push every
+axis (saturation, bloom, lifted blacks, overexposure) while still changing
+only light.
+
 ## Pairing rule for a series
 Different canvas, different angle, different mood per episode: e.g. amber
 day exterior → blue night side-light → green interior high angle. Two

@@ -44,11 +44,13 @@ signature to the canvas before switching films.
 ## Delta check: soft looks make weak reveals
 A grade that keeps the take's color family (warm window light → warmer
 window light) changes little on screen. Warn, then offer stronger films of
-the same vibe and let the user choose:
+the same vibe and let the user choose. "Same vibe" means the same MOOD
+(intimate, melancholic, cool, oppressive) — not merely the same color
+temperature. Warm-and-tender and warm-and-hard are different vibes.
 
 | Soft look asked for | Why it's weak | Stronger, same vibe |
 |---|---|---|
-| **Her** (cream/peach) | close-up window light is already soft and warm | Pulp Fiction daylight (hard sun, cyan sky), Blade Runner 2049 amber (haze, silhouette), a "pushed" Her (heavy peach flood, lifted blacks, blown window) |
+| **Her** (cream/peach, intimate, melancholic) | close-up window light is already soft and warm | Blade Runner 2049 amber (warm solitude, enveloping haze), Lost in Translation night (romantic melancholy, warm practicals vs blue shadow), a "pushed" Her (heavy peach flood, lifted blacks, blown window) — NOT Pulp Fiction: same color family, opposite mood |
 | Naturalistic dramas (Nomadland, Marriage Story) | the look IS natural light | Moonlight (blue-violet night), Se7en (bleach bypass) |
 | Warm nostalgic (Call Me by Your Name, Amélie-adjacent) | warms what is already warm | Blade Runner 2049 amber, Mad Max orange/teal |
 | Cool minimal (Ex Machina interiors) | cools a neutral room slightly | The Matrix green, Blade Runner 2049 cyan interior |

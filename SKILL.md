@@ -1,6 +1,6 @@
 ---
 name: cine-grade
-description: Use when the user wants raw footage (a real phone clip or an AI-generated take) to get the look, color grade, lighting or "vibe" of a specific film or series through a Seedance 2.5 video-edit prompt, or wants to design the raw take that will be graded later, or is fighting the failure modes of this workflow (result looks like a color filter, environment or wardrobe got regenerated, skin went dead/grey, no depth or haze, the "before" already looks staged). Triggers on /cine-grade, "make my clip look like [film]", "color grade like [movie]", "recreate the look of [series]", "cinematic look from a film", a film name plus a clip. PT examples for reliability: "deixa meu vídeo com a cara de [filme]", "faz o grade do [filme] no meu take", "recria o look de [série] nesse vídeo", "qual filme funciona pra esse take". NOT for multi-camera edits (/multicam, /cine-multicam), kinetic text (/kinetic-multicam), or hero-object ads.
+description: Use when the user wants raw footage (a real phone clip or an AI-generated take) to get the look, color grade, lighting or "vibe" of a specific film or series through a Seedance 2.5 video-edit prompt, or wants to design the raw take that will be graded later, or is fighting the failure modes of this workflow (result looks like a color filter, environment or wardrobe got regenerated, skin went dead/grey, no depth or haze, the "before" already looks staged). Triggers on /cine-grade, "make my clip look like [film]", "color grade like [movie]", "recreate the look of [series]", "cinematic look from a film", a film name plus a clip, or the film's camera/angles cut on the speech beats together with its grade ("multicam + grading", "shoot it like [director]"). PT examples for reliability: "deixa meu vídeo com a cara de [filme]", "faz o grade do [filme] no meu take", "recria o look de [série] nesse vídeo", "qual filme funciona pra esse take". NOT for multi-camera edits (/multicam, /cine-multicam), kinetic text (/kinetic-multicam), or hero-object ads.
 ---
 
 # cine-grade: recreate any film's look on raw footage (Seedance 2.5)
@@ -25,6 +25,9 @@ edit is forbidden from regenerating any physical element.
    (real recording instructions or AI-generation take design) or is planning
    a multi-film series.
 5. **`references/troubleshooting.md` — Step 6.** Defect → countermeasure.
+6. **`references/director-cut.md` — only when** the user wants the film's
+   CAMERA too (director-style virtual cameras cut on the speech beats)
+   together with the grade, in one prompt.
 
 ## Hard rules (never break)
 - **Light, not set.** Only films whose look lives in lighting/color pass the
@@ -99,6 +102,15 @@ edit is forbidden from regenerating any physical element.
    (e.g. "the horizon must dissolve into haze", "skin must stay alive").
 6. **Iterate** with `troubleshooting.md`; a look that survives production
    is appended to `film-looks.md` (ask before writing).
+
+## Director cut mode (camera + grade, one prompt)
+When the user wants "the cameras/angles of the film too", "multicam +
+grading together", "edit it like [director] would shoot it": ingest the
+take (word timestamps via the cine-multicam skill's `beats.py`, frames at
+1 fps), design the shot list in the DIRECTOR's grammar (not the default
+arc), present the breakdown + shot list at a mandatory checkpoint, then fill
+the hybrid skeleton in `director-cut.md` — grade section + camera sequence
+in one block, base video as the only upload.
 
 ## Quick reference
 | Take canvas | Films that repaint it |

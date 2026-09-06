@@ -18,6 +18,7 @@ Blade Runner 2049 amber; dense-red interiors → Moonlight or Drive).
 | **Blade Runner 2049** (Vegas sequence) | monochromatic amber daylight, thick luminous dust, strong atmospheric perspective, subject as soft silhouette emerging into amber | open space / sky, low horizon, depth | horizon must dissolve into haze; not just an orange tint |
 | **Moonlight** | deep saturated blue-violet night, luminous cool skin on the lit side, rich never-crushed shadow, warm undertone alive in skin | single-window side light, unfilled shadow | strong side gradient on the face; skin alive, not grey |
 | **The Matrix** | controlled sickly green cast on everything incl. skin, dense green-edged blacks, no pure white, clinical fluorescent | sparse interior or close-up skin | green must be IN the skin; no pure white left |
+| **Only God Forgives** (Refn) | blood-red source light + one tungsten practical, oxblood walls to black, lacquer-black table, hard red/black split on the face | sparse interior, table, window | table must go black; shadow side of face near-black — the grade-only run came out flat, the director-cut run (with the blacks reinforcement) nailed it; full prompt in `director-cut.md` |
 
 One film, several signatures: a validated film may have a second look that
 lives in light (BR2049 amber exterior vs. cyan interior). Match the
@@ -38,7 +39,7 @@ signature to the canvas before switching films.
 |---|---|
 | **The Grand Budapest Hotel** | the pink is the hotel, the costumes, the symmetry of built sets; a pink-tinted plain wall is just a pink wall |
 | **Amélie** | the red-and-green is painted walls and props; the gold tint alone reads as "warm filter" |
-| **In the Mood for Love** | patterned wallpaper, cheongsams, practical lamps; tungsten alone does not get there |
+| **In the Mood for Love** | patterned wallpaper, cheongsams, practical lamps; tungsten alone does not get there — same palette, light-based: Only God Forgives (red/tungsten), Suspiria 1977 (red + green gel light) |
 | **Wes Anderson / Jeunet / Wong Kar-wai in general** | production-design auteurs — steer to a light-based look with the same mood |
 
 ## Delta check: soft looks make weak reveals

@@ -13,6 +13,9 @@ You shoot (or AI-generate) a plain, ungraded clip. The skill decomposes the film
 
 No footage yet? The skill designs the raw take instead: which composition of the film to quote, where to prop the phone, the "honest before" rules (neutral wardrobe, natural light, no filters), and an AI-generation prompt with placeholders for your own character.
 
+## Director cut: camera + grade in one prompt
+Want the film's cameras too? The skill reads your take (word-level timestamps + frames), designs the shot list in the **director's own camera grammar** (Refn's glacial symmetrical tableaux, Villeneuve's monumental wides, Jenkins' circling handheld...) cut on your speech beats, and fuses it with the grade into a single Seedance 2.5 prompt. Base video in, a multi-cam scene from the film out. The camera layer uses the cine-multicam skeleton.
+
 ## Validated looks
 Blade Runner 2049 (Vegas amber), Moonlight (blue-violet night), The Matrix (green interrogation room) — full production-validated prompts included. Plus approved-but-untested treatments (Pulp Fiction, Se7en, Mad Max, Drive, Her, BR2049 interiors) and a rejected list with the reasons.
 
@@ -34,6 +37,7 @@ Then open Claude Code, drop your clip and say: **"make my clip look like Blade R
 - `references/film-looks.md` — viability filter, validated / approved / rejected films, series pairing rule.
 - `references/take-design.md` — the honest "before": canvas, framing quotes, AI-generated takes, series planning.
 - `references/troubleshooting.md` — defect → countermeasure.
+- `references/director-cut.md` — director camera grammars, the hybrid camera + grade skeleton, a validated Refn example.
 
 ## License
 MIT. See `LICENSE`.

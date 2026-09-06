@@ -1,9 +1,24 @@
 # Director cut: camera grammar + grade in ONE prompt
 
-Production-validated (2026-09-06): one raw take re-filmed by virtual moving
+Production-validated (2026-09-06, live generation reviewed frame by frame): one raw take re-filmed by virtual moving
 cameras cut on the speech beats, in the director's own camera grammar, AND
 re-lit to the film's look — a single Seedance 2.5 prompt, base video as the
 only upload. The result read as a real multi-cam shoot inside the film.
+
+**What the generation actually did (observed 2026-09-06):** more than
+relight + re-film. Describing each shot's composition in the director's
+grammar made the model EXTEND the environment to serve that composition —
+a plain white table became a long black lacquered table with the red
+window reflected as a line across it, the room grew black walls and a
+matching second window, and the wide tableau placed the subject small and
+dead-center at the far end of a room the original take never showed. Face,
+wardrobe, gestures, timing and voice stayed identical. So in this mode the
+"do not regenerate physical elements" clause holds for the PERSON and the
+PERFORMANCE, while the set is allowed to grow into the director's frame —
+and it stays coherent because the grade is locked across every shot. This
+is a restaging, not a filter: the take becomes a scene from the film.
+Write the wide shots as the director would compose them and let the model
+build the room to match; keep the identity and performance locks absolute.
 
 This mode borrows the cine-multicam skill's skeleton (load-bearing lines
 fixed) and adds two things: a LIGHTING AND COLOR GRADE section carrying the

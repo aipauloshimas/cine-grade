@@ -110,7 +110,10 @@ take (word timestamps via the cine-multicam skill's `beats.py`, frames at
 1 fps), design the shot list in the DIRECTOR's grammar (not the default
 arc), present the breakdown + shot list at a mandatory checkpoint, then fill
 the hybrid skeleton in `director-cut.md` — grade section + camera sequence
-in one block, base video as the only upload.
+in one block, base video as the only upload. Expect a restaging: the model
+extends the set to fit the director's compositions while person,
+performance and grade stay locked (the "only light" rule of grade-only
+mode does not apply to the environment here — it applies to the person).
 
 ## Quick reference
 | Take canvas | Films that repaint it |

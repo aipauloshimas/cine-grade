@@ -114,6 +114,9 @@ in one block, base video as the only upload. Expect a restaging: the model
 extends the set to fit the director's compositions while person,
 performance and grade stay locked (the "only light" rule of grade-only
 mode does not apply to the environment here — it applies to the person).
+Scale rule: no camera ever frames the subject smaller than the base video
+does, no aerial/drone viewpoints — a dot-sized subject flips the model into
+pure generation and the performance is lost.
 
 ## Quick reference
 | Take canvas | Films that repaint it |

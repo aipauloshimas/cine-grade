@@ -47,6 +47,22 @@ framing.
 | **Tarantino** (Pulp Fiction) | trunk-shot low angle, long static two-shots, one slow push, hard cuts on lines | medium | drift |
 | **Sam Levinson** (Euphoria) | circling steadicam, long glossy holds, in-and-out of colored light, close on skin | medium-high | static wides |
 
+**Scale rule (hard, from a real failure):** every virtual camera stays at
+human scale and never frames the subject SMALLER than the base video does.
+No aerial, drone, overhead or god's-eye viewpoints, no "tiny figure in a
+vast landscape" openings. When the subject becomes a dot there is no face,
+mouth or gesture left to preserve, the model switches to pure generation
+and never comes back: the whole clip returns with a stiff re-animated body,
+plastic skin and generic lip sync (observed 2026-09-06, Villeneuve aerial
+descent on a 7 s walk-in take — the environment was superb, the
+performance was gone). Hype in the opening comes from camera MOVEMENT at
+the source's scale (a low ground rush, a fast lateral, a whip-settle), not
+from scale. Add to CRITICAL: "Every camera stays at human scale on the
+ground… he is never framed smaller than in the base video — his face,
+hands and gestures must remain readable in every shot" plus a skin/body
+line: "Preserve his real skin texture and micro-expressions from the base
+video: no smoothing, no plastic look, no re-animated body."
+
 Shot count follows the director first, duration second (at least ~2 s per
 shot; a 5 s take under Refn is 3 shots, not 4). Cuts land on phrase starts
 or at the start of a silence, never mid-word. Every shot body double-anchors
@@ -150,4 +166,5 @@ director grammar. Never ship unchecked.
 | Cuts good, grade flat / tinted | Strengthen the GRADE section with the film's countermeasures from `troubleshooting.md` (blacks, split, no pure white) |
 | Grade differs between shots | Repeat "identical grade in every shot" inside each shot body |
 | Sibling-template tokens leak in | Never `* At [Xs]:`, "Whip the camera", "kinetic super" — this is the cine-multicam grammar only |
+| Whole clip comes back stiff, plastic, re-animated, generic lip sync | A shot framed the subject far smaller than the base (aerial / vast wide). Apply the scale rule: ground-level cameras, subject never smaller than in the source, dynamic move = movement not scale; add the CRITICAL scale + skin lines |
 | Naming a rig renders it as a prop | Never "robot arm" / "robotic arm"; write "a precision camera move" and describe the trajectory (cine-multicam countermeasure) |

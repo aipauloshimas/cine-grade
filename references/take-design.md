@@ -15,8 +15,14 @@ directions and both hold: **composition is free, light is honest.**
 - Camera propped, never handheld. Format: 16:9 whenever the take quotes a
   widescreen composition (the reveal depends on that geometry; crop to
   9:16 in the edit if needed); 9:16 only for close-ups that quote nothing.
-- Plain environment: bare wall, empty lot, empty table. Nothing that
-  denounces intention.
+- Plain LIGHT, real ROOM. The environment should be the user's actual
+  life — a creator's desk, camera, headphones, mug, plant, shelf, prints —
+  in neutral materials (wood, black, grey, white, green). Empty rooms read
+  as AI sets and give the grade nothing to relight; real objects make the
+  relit result convincing and the "before" relatable. Two limits: no
+  colored light sources (RGB LED, ring light, neon, lamps on) and no props
+  that belong to the target film. Your props are fine; the film's are not.
+  Screens show blurred content, "no readable text".
 
 ## Canvas: the big repaintable area decides the film
 | Canvas | What to guarantee in the take | Films |

@@ -30,7 +30,7 @@ directions and both hold: **composition is free, light is honest.**
 | **Open space / sky** | low horizon, deep perspective, subject small-to-medium, no buildings cutting the sky | Blade Runner 2049 amber, Pulp Fiction, Mad Max |
 | **Side-lit shadow** | ONE window, subject ~60 cm from it at three-quarter, half the face in unfilled shadow — do NOT fill it | Moonlight, Se7en, Drive |
 | **Close-up skin** | facing the window, face fills the frame, even soft frontal light | The Matrix, Her |
-| **Sparse interior, high angle** | phone propped high in a corner looking down, plain table, bare walls | The Matrix (interrogation room) |
+| **Interior, high angle** | camera high in a corner looking down, subject seated at a desk or table, the user's real objects in neutral tones | The Matrix (interrogation room), Only God Forgives |
 
 A blank canvas with nothing in it (sky only, no ground, no horizon) grades
 well but is empty to watch. Give the frame geometry: perspective lines, a
@@ -65,8 +65,9 @@ keeps everything else. Add these cine-grade clauses:
   light, no second light source, a clear bright-to-dark gradient across the
   face"*.
 - AVOID adds: *"no cinematic color grading, no color filters, no colored
-  lights, no bokeh portrait blur"* plus the canvas bans ("no sunlight or
-  blue sky" for overcast, "no objects on the wall" for sparse interiors).
+  lights, no bokeh portrait blur, no RGB or LED lights, no ring light, no
+  readable text on screens"* plus the canvas bans ("no sunlight or blue
+  sky" for overcast, "no fill light on the shadow side" for side-lit).
 - Wardrobe in the identity lock stays neutral per the honest-before rules.
 
 Placeholders belong to the user: `[your character reference]`, their own

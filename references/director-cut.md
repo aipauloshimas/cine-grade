@@ -53,10 +53,10 @@ framing.
 | **Wes Anderson** (grammar only — look is rejected by the light filter) | dead-center symmetry, planimetric 90° angles, whip pans, lateral tracking, snap zooms | medium | diagonal framing |
 | **Gaspar Noé** (Enter the Void, Climax) | floating disembodied camera, slow rotations and overheads, long unbroken drifts through colored light | very few | hard cuts (mind the scale rule on overheads) |
 
-### Director not in the table: derive the grammar first
-Never fall back to the cine-multicam default arc. Answer six questions from
-memory of the director's films (or from a clip/still the user pastes), write
-the answers as a new table row, THEN design the shot list from that row:
+### Director not in the table: derive the grammar yourself
+Never fall back to the cine-multicam default arc, and never ask the user
+to describe the director's camera. Derive it from your own knowledge of the
+director's films, answering these six points internally:
 1. **Height and angle** — eye level, low, high, frontal symmetry, off-axis?
 2. **Movement vocabulary** — locked, straight dolly, gliding steadicam,
    handheld, slow zoom, whip pan, crane?
@@ -65,35 +65,13 @@ the answers as a new table row, THEN design the shot list from that row:
 5. **The signature move** — the ONE move audiences recognize (Kubrick's
    zoom, PTA's whip, Scorsese's following track). It becomes the dynamic shot.
 6. **What they never do** — the ban that keeps the design from going generic.
-State the derived row to the user at the checkpoint ("here is how I read
-[director]'s camera") so they can correct it before the prompt is written.
-The scale rule and the ≥2 s / one-dynamic-move rules still apply.
-
-**Scale rule (hard, from a real failure):** every virtual camera stays at
-human scale and never frames the subject SMALLER than the base video does.
-No aerial, drone, overhead or god's-eye viewpoints, no "tiny figure in a
-vast landscape" openings. When the subject becomes a dot there is no face,
-mouth or gesture left to preserve, the model switches to pure generation
-and never comes back: the whole clip returns with a stiff re-animated body,
-plastic skin and generic lip sync (observed 2026-09-06, Villeneuve aerial
-descent on a 7 s walk-in take — the environment was superb, the
-performance was gone). Hype in the opening comes from camera MOVEMENT at
-the source's scale (a low ground rush, a fast lateral, a whip-settle), not
-from scale. Add to CRITICAL: "Every camera stays at human scale on the
-ground… he is never framed smaller than in the base video — his face,
-hands and gestures must remain readable in every shot" plus a skin/body
-line: "Preserve his real skin texture and micro-expressions from the base
-video: no smoothing, no plastic look, no re-animated body."
-
-Shot count follows the director first, duration second. Short-clip table
-(validated): ≤6 s → 3 shots (a 1 s middle shot is fine when it is a clean
-reposition on a gesture); 6–12 s → 3–4; 12–20 s → 4–6; longer → follow the
-cine-multicam table. A sparse director (Refn, Villeneuve) takes the low end,
-a busy one (Jenkins, Levinson) the high end. Cuts land on phrase starts
-or at the start of a silence, never mid-word. Every shot body double-anchors
-its timecode to a spoken moment or gesture AND states how the light falls
-in that framing ("the left side of his face burning red-amber, the right
-sunk into near-black").
+If memory is thin (niche or very recent director, or you are unsure of the
+signature move), search the web first — cinematography breakdowns, video
+essays, interviews with the film's DP — then derive. Write the result as a
+new table row and simply state it at the checkpoint ("Here is how I read
+[director]'s camera: …") alongside the shot list; the user corrects only if
+they disagree. The scale rule and the ≥2 s / one-dynamic-move rules still
+apply.
 
 ## Skeleton (validated hybrid — load-bearing lines fixed)
 ```

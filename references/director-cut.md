@@ -63,8 +63,11 @@ hands and gestures must remain readable in every shot" plus a skin/body
 line: "Preserve his real skin texture and micro-expressions from the base
 video: no smoothing, no plastic look, no re-animated body."
 
-Shot count follows the director first, duration second (at least ~2 s per
-shot; a 5 s take under Refn is 3 shots, not 4). Cuts land on phrase starts
+Shot count follows the director first, duration second. Short-clip table
+(validated): ≤6 s → 3 shots (a 1 s middle shot is fine when it is a clean
+reposition on a gesture); 6–12 s → 3–4; 12–20 s → 4–6; longer → follow the
+cine-multicam table. A sparse director (Refn, Villeneuve) takes the low end,
+a busy one (Jenkins, Levinson) the high end. Cuts land on phrase starts
 or at the start of a silence, never mid-word. Every shot body double-anchors
 its timecode to a spoken moment or gesture AND states how the light falls
 in that framing ("the left side of his face burning red-amber, the right
@@ -153,6 +156,19 @@ Slow, hypnotic, formally rigid — every frame composed like a symmetrical paint
 Same scene. Same person. Same performance. Same dialogue. Same voice. Same timing. ONLY THE CINEMATOGRAPHY AND THE LIGHTING CHANGE.
 No new dialogue. No replacement voice. No silent montage. No new actions, characters or objects. No added props, lamps or set dressing. No camera equipment, rigs or crew visible in frame. No music. No subtitles. No identity drift. No face changes, beautification or artificial skin. No slow motion. No speed ramps. No time remapping.
 ```
+
+## Objects that are already colored
+A hue-shifting grade must say what happens to diegetic colored objects
+(a red fire extinguisher under green, an orange moka pot under blue): they
+desaturate TOWARD the dominant and stay barely legible — "drains into a
+dark desaturated maroon under the green cast" — never keep their full
+color (breaks the cast) and never get removed (breaks preservation).
+
+## Verifier
+`cine-multicam/scripts/verify_prompt.py` does not apply to director-cut
+prompts (it rejects the LIGHTING AND COLOR GRADE section and 3-shot lists).
+Verify by hand: timecodes chained to one decimal summing to the duration,
+one dynamic move at most, negatives list intact, no sibling tokens.
 
 ## Checkpoint (mandatory, from cine-multicam)
 Present the breakdown table and the director shot list with cut times BEFORE

@@ -3,6 +3,7 @@
 
 Transcribes a local video with Whisper (word timestamps), then prints:
   DURATION, LANGUAGE, WORDS (start/end/word), GAPS (silences >= 0.25s),
+  EDGES (lead-in / tail silence against the clip duration),
   NAIVE_CUTS (deterministic cut-point suggestions; shots = cuts + 1).
 
 The script reports facts; semantic refinement (phrase meaning, visual events,
@@ -186,6 +187,13 @@ def main():
             print(f"  after '{a['word']}': {a['end']:.2f} -> {b['start']:.2f}  (gap {g:.2f}s)")
     if not any_gap:
         print("  (none)")
+    lead = words[0]["start"] if words else 0.0
+    tail = duration - words[-1]["end"] if words else duration
+    print("
+EDGES (silence before the first word / after the last word):")
+    print(f"  lead-in: 0.00 -> {lead:.2f}  ({lead:.2f}s)")
+    print(f"  tail:    {words[-1]['end'] if words else 0.0:.2f} -> {duration:.2f}  ({tail:.2f}s)"
+          + ("  <- usable hold/button beat" if tail >= MIN_GAP else ""))
 
     cuts, too_short = naive_cuts(words, duration, args.cuts)
     if too_short:

@@ -33,9 +33,11 @@ framing.
    stem>.json` next to the video — the same cache the cine-multicam skill
    uses, so the two never fork it. Cuts need word start/end times and
    silences.
-2. Frames at 1 fps (`ffmpeg -vf fps=1`) — read ALL of them alongside the
-   words. Cuts are motivated by both: phrase starts, silences, gestures,
-   posture changes, lean-ins.
+2. Frames: 2 fps for clips up to 10 s (`ffmpeg -vf fps=2`), 1 fps above
+   that — read ALL of them alongside the words. Cuts are motivated by both:
+   phrase starts, silences, gestures, posture changes, lean-ins. beats.py's
+   EDGES line reports the lead-in and the tail silence: a tail ≥ 0.25 s is a
+   usable hold for the final shot.
 3. The film passes the viability filter and its 8-axis treatment exists
    (`film-looks.md` / `eight-axis.md`).
 
@@ -75,6 +77,19 @@ new table row and simply state it at the checkpoint ("Here is how I read
 [director]'s camera: …") alongside the shot list; the user corrects only if
 they disagree. The scale rule and the ≥2 s / one-dynamic-move rules still
 apply.
+
+### Rows are written against one reference scene — adapt them to the take
+A grammar row (the Wachowskis' seated interrogation, Refn's table tableau)
+may name moves that don't fit a walking or standing take, or that the scale
+rule bans (an overhead top-down on a full-body walk). Keep the moves that
+transfer, drop the ones that don't, and SAY SO at the checkpoint ("dropped
+the overhead: it would frame him smaller than the base"). Adapting is
+expected; silently inventing a different grammar is not.
+
+### Timecode rounding
+A cut lands at the START of the next word (or of a silence), rounded to one
+decimal — 2.98 → 3.0. The last shot ends at the clip duration rounded to
+one decimal — 5.09 → 5.1. Timecodes chain with no gaps.
 
 ## Skeleton (validated hybrid — load-bearing lines fixed)
 ```

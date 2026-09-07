@@ -189,8 +189,8 @@ def main():
         print("  (none)")
     lead = words[0]["start"] if words else 0.0
     tail = duration - words[-1]["end"] if words else duration
-    print("
-EDGES (silence before the first word / after the last word):")
+    print()
+    print("EDGES (silence before the first word / after the last word):")
     print(f"  lead-in: 0.00 -> {lead:.2f}  ({lead:.2f}s)")
     print(f"  tail:    {words[-1]['end'] if words else 0.0:.2f} -> {duration:.2f}  ({tail:.2f}s)"
           + ("  <- usable hold/button beat" if tail >= MIN_GAP else ""))

@@ -100,8 +100,9 @@ nothing but light changes.
    ungraded-look clauses). Deliver the take design and the film's result
    checks; the edit prompt is written once the footage exists.
 3. **Ingest.** Word-level timestamps: `python scripts/beats.py <video>`
-   (Whisper, local). Frames at 1–2 fps with ffmpeg. Read ALL frames
-   alongside the words.
+   (Whisper, local; note its EDGES line — a tail silence is a usable hold).
+   Frames with ffmpeg: 2 fps for clips up to 10 s, 1 fps above. Read ALL
+   frames alongside the words.
 4. **Breakdown + shot list.** Table: time → spoken phrase → visual event.
    Pick the director from the film (table in `director-cut.md`; derive from
    memory or web search if absent — never ask the user to describe the

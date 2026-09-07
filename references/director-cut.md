@@ -46,6 +46,28 @@ framing.
 | **Fincher** (Se7en) | locked-off, low and precise, minimal reframes, slow dolly, cuts on action | medium | operator breathing |
 | **Tarantino** (Pulp Fiction) | trunk-shot low angle, long static two-shots, one slow push, hard cuts on lines | medium | drift |
 | **Sam Levinson** (Euphoria) | circling steadicam, long glossy holds, in-and-out of colored light, close on skin | medium-high | static wides |
+| **Kubrick** (The Shining, 2001) | one-point-perspective symmetry, slow relentless zoom in or out, steadicam gliding behind or ahead of the subject, long holds | few | handheld shake, off-center framing |
+| **Paul Thomas Anderson** (Boogie Nights, Licorice Pizza) | long flowing steadicam follows, whip pans between subjects, slow push on a face, 35 mm warmth | medium | locked symmetry |
+| **Scorsese** (Goodfellas, The Irishman) | tracking shot following or leading the subject, fast push-ins on a reaction, freeze-like holds, whip to detail | medium-high | static tableaux |
+| **Nolan** (Interstellar, Oppenheimer) | large-format locked wides, handheld intimacy on faces, slow push, cuts on action, no ornament | medium | glossy circling |
+| **Wes Anderson** (grammar only — look is rejected by the light filter) | dead-center symmetry, planimetric 90° angles, whip pans, lateral tracking, snap zooms | medium | diagonal framing |
+| **Gaspar Noé** (Enter the Void, Climax) | floating disembodied camera, slow rotations and overheads, long unbroken drifts through colored light | very few | hard cuts (mind the scale rule on overheads) |
+
+### Director not in the table: derive the grammar first
+Never fall back to the cine-multicam default arc. Answer six questions from
+memory of the director's films (or from a clip/still the user pastes), write
+the answers as a new table row, THEN design the shot list from that row:
+1. **Height and angle** — eye level, low, high, frontal symmetry, off-axis?
+2. **Movement vocabulary** — locked, straight dolly, gliding steadicam,
+   handheld, slow zoom, whip pan, crane?
+3. **Cut rhythm** — rare and long, medium, frenetic?
+4. **Lens** — wide and close, long and compressed, normal?
+5. **The signature move** — the ONE move audiences recognize (Kubrick's
+   zoom, PTA's whip, Scorsese's following track). It becomes the dynamic shot.
+6. **What they never do** — the ban that keeps the design from going generic.
+State the derived row to the user at the checkpoint ("here is how I read
+[director]'s camera") so they can correct it before the prompt is written.
+The scale rule and the ≥2 s / one-dynamic-move rules still apply.
 
 **Scale rule (hard, from a real failure):** every virtual camera stays at
 human scale and never frames the subject SMALLER than the base video does.

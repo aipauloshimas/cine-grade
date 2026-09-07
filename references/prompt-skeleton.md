@@ -1,7 +1,10 @@
-# The edit prompt: skeleton + preservation block
+# The grade as prose: skeleton + preservation block
 
-One dense paste-ready block, prose only, no headers inside the block. The
-user uploads the raw video alone and pastes this. No reference still.
+Two uses. (1) In the default director cut, the treatment written here
+becomes the LIGHTING AND COLOR GRADE section of the hybrid prompt in
+`director-cut.md`. (2) In grade-only mode (on request), this whole block IS
+the prompt: one dense paste-ready block, prose only, no headers inside it.
+The user uploads the raw video alone and pastes it. No reference still.
 
 ## Assembly order
 1. **Opening** — `Edit Video 1 to match the following visual treatment.`

@@ -1,122 +1,129 @@
 ---
 name: cine-grade
-description: Use when the user wants raw footage (a real phone clip or an AI-generated take) to get the look, color grade, lighting or "vibe" of a specific film or series through a Seedance 2.5 video-edit prompt, or wants to design the raw take that will be graded later, or is fighting the failure modes of this workflow (result looks like a color filter, environment or wardrobe got regenerated, skin went dead/grey, no depth or haze, the "before" already looks staged). Triggers on /cine-grade, "make my clip look like [film]", "color grade like [movie]", "recreate the look of [series]", "cinematic look from a film", a film name plus a clip, or the film's camera/angles cut on the speech beats together with its grade ("multicam + grading", "shoot it like [director]"). PT examples for reliability: "deixa meu vídeo com a cara de [filme]", "faz o grade do [filme] no meu take", "recria o look de [série] nesse vídeo", "qual filme funciona pra esse take". NOT for multi-camera edits (/multicam, /cine-multicam), kinetic text (/kinetic-multicam), or hero-object ads.
+description: Use when the user wants raw footage (a real phone clip or an AI-generated take) turned into a scene from a specific film or series through one Seedance 2.5 video-edit prompt — the film's look, color grade and lighting PLUS its director's camera work cut on the speech beats (the default), or the grade alone when they say "grade only" / "keep my cameras". Also for designing the raw take that will be graded later, and for fighting this workflow's failure modes (result looks like a color filter, performance went stiff/plastic, environment or wardrobe got regenerated, skin went dead/grey, no depth or haze, the "before" already looks staged). Triggers on /cine-grade, "make my clip look like [film]", "color grade like [movie]", "recreate the look of [series]", "cinematic look from a film", "shoot it like [director]", "multicam + grading", a film name plus a clip. PT examples for reliability: "deixa meu vídeo com a cara de [filme]", "faz o grade do [filme] no meu take", "recria o look de [série] nesse vídeo", "qual filme funciona pra esse take". NOT for camera-only edits (/multicam, /cine-multicam), kinetic text (/kinetic-multicam), or hero-object ads.
 ---
 
-# cine-grade: recreate any film's look on raw footage (Seedance 2.5)
+# cine-grade: turn a raw take into a scene from any film (Seedance 2.5)
 
-One raw clip + one text prompt = the clip re-lit and re-graded to a named
-film. No reference still, no LUT, no manual grading. The magic is honest
-only when the BEFORE is genuinely plain and the AFTER changes nothing but
-light — so this skill guards both ends.
+One raw clip + one text prompt = the same person, same performance, same
+voice, now inside the film: its light and color decomposed into 8 axes,
+its director's cameras cut on the speech beats, the room grown into the
+director's compositions. No reference still, no LUT, no manual grading.
 
-**Core principle: describe the LIGHT, never rebuild the SET.** A film's look
-is decomposed into 8 axes of light and written into the prompt as prose; the
-edit is forbidden from regenerating any physical element.
+**Default mode is the DIRECTOR CUT** — camera + grade in one prompt
+(`references/director-cut.md`). **Grade-only** — light and color, the
+user's own cameras and framing untouched — runs only when asked ("grade
+only", "keep my cameras", "just the color").
+
+**Core principle: lock the PERSON, describe the LIGHT.** The face,
+performance, wardrobe, timing and voice are never regenerated. The film's
+look is written as prose onto the real elements of the frame. In the
+director cut the set may grow to fit the director's framing; in grade-only
+nothing but light changes.
 
 ## Read these
-1. **`references/prompt-skeleton.md` — ALWAYS.** The assembly skeleton, the
-   verbatim preservation block, and three production-validated prompts.
-2. **`references/eight-axis.md` — Step 3.** How to decompose a look and write
-   each axis as prompt prose.
-3. **`references/film-looks.md` — Step 1 and 3.** Validated looks ready to
-   paste, approved-but-untested looks, rejected films and why.
-4. **`references/take-design.md` — only when** the user has no footage yet
-   (real recording instructions or AI-generation take design) or is planning
-   a multi-film series.
-5. **`references/troubleshooting.md` — Step 6.** Defect → countermeasure.
-6. **`references/director-cut.md` — only when** the user wants the film's
-   CAMERA too (director-style virtual cameras cut on the speech beats)
-   together with the grade, in one prompt.
+1. **`references/director-cut.md` — ALWAYS.** The default mode: director
+   camera grammars, the hybrid skeleton, the scale rule, a validated example.
+2. **`references/prompt-skeleton.md` — ALWAYS.** The grade written as prose
+   (source of the GRADE section), the preservation block, validated grades;
+   also the whole prompt for grade-only mode.
+3. **`references/eight-axis.md` — Step 5.** Decompose a look into 8 axes and
+   write each onto the frame.
+4. **`references/film-looks.md` — Steps 1 and 5.** Viability filter,
+   validated / approved / rejected films, palette families, delta check.
+5. **`references/take-design.md` — only when** the user has no footage yet,
+   or is planning a multi-film series.
+6. **`references/troubleshooting.md` — Step 8.** Defect → countermeasure.
 
 ## Hard rules (never break)
-- **Light, not set.** Only films whose look lives in lighting/color pass the
-  viability filter. If recognizing the film needs the right objects, walls,
-  wardrobe or set dressing (Grand Budapest, Amélie, In the Mood for Love),
-  say so, offer the 3 closest films that pass, and deliver the full prompt
-  for the best-fitting one (don't stop at a list). Never "solve" it by
-  regenerating the environment.
-- **A film can have more than one light signature.** Pick the signature that
-  matches the user's canvas (Blade Runner 2049 = amber Vegas exterior OR cold
-  cyan LA interior), deriving it with `eight-axis.md` if the library only
-  holds the other one. Canvas mismatch means another scene of the same film
-  before it means another film.
-- **The edit prompt changes ONLY light.** Lighting, exposure, color, contrast,
-  shadows, highlights, atmosphere. Never wardrobe recolors, never swapped
-  furniture, never a replaced window view, never added objects or fog
-  machines "in the room". Existing surfaces are described by what they
-  BECOME under the new light ("the grey concrete becomes warm dusty amber").
+- **The film must live in light.** Only films whose look is lighting and
+  color pass the viability filter. If recognizing the film needs its
+  objects, walls, wardrobe or set dressing (Grand Budapest, Amélie, In the
+  Mood for Love), say so, offer the 3 closest films that pass, and deliver
+  the prompt for the best-fitting one. Never "solve" it by inserting the
+  film's props — the director cut grows the user's room, it never builds
+  the film's set.
+- **The person is locked.** Identity from the base video only; dialogue,
+  voice, timing, lip sync, gestures, skin texture preserved in every mode.
+  Never wardrobe recolors, never a re-animated body. In grade-only mode the
+  environment is locked too: surfaces are described by what they BECOME
+  under the new light, never replaced.
+- **Scale rule (director cut).** No camera ever frames the subject smaller
+  than the base video does; no aerial, drone or god's-eye viewpoints. A
+  dot-sized subject flips the model into pure generation and the whole clip
+  comes back stiff and plastic. Hype comes from movement, not scale.
+- **Checkpoint before the prompt (director cut).** Present the breakdown
+  table and the director shot list with cut times, ask "accept or adjust?",
+  and wait. Never ship a director cut unchecked.
+- **A film can have more than one light signature.** Pick the one that
+  matches the canvas (Blade Runner 2049 = amber Vegas exterior OR cyan LA
+  interior), deriving it with `eight-axis.md` if the library only holds the
+  other. Canvas mismatch means another scene of the same film before it
+  means another film.
 - **Text only — no reference still.** The 8-axis treatment is baked into the
-  prompt; the user uploads the video alone. The image+text hybrid ("Edit
-  Video 1 using Image 1 as a reference for lighting…") exists and works for
-  some creators, but a still also carries the film's composition, subject
-  and identity into the edit and lets the model skip the analysis. This
-  skill's method IS the analysis written as text — offer the hybrid only as
-  a fallback when a text-only result fails twice on the same defect.
-- **Preservation block verbatim** (in `prompt-skeleton.md`), ending with the
-  "ONLY change:" clause. Never trimmed for length.
-- **Calibrate to the real frame.** When a clip or frame is available, look at
-  it (extract a frame with ffmpeg if given a file) and name the actual
-  elements — sky, wall, table, window, floor, garments — and what each turns
-  into. Generic prompts produce generic tints.
+  prompt; the user uploads the video alone. The image+text hybrid exists
+  and works for some creators, but a still also carries the film's
+  composition, subject and identity into the edit. Offer it only as a
+  fallback when a text-only result fails twice on the same defect.
+- **Load-bearing lines verbatim.** Director cut: CRITICAL, CAMERA RHYTHM,
+  CONTINUITY and FINAL FEEL lines from `director-cut.md`. Grade-only: the
+  preservation block ending in "ONLY change:" from `prompt-skeleton.md`.
+  Never trimmed for length.
+- **Calibrate to the real frame.** Extract frames (ffmpeg) and name the
+  actual elements — sky, wall, table, window, floor, objects, garments,
+  skin — and what each becomes. Generic prompts produce generic tints.
 - **Honest before.** The raw take is ungraded, auto-exposure, neutral
-  wardrobe, natural light, no portrait mode, no filter — but its FRAMING may
-  quote an iconic composition of the target film. Composition is free; light
-  and set dressing are not.
+  wardrobe, natural light, no portrait mode, no filter, no colored light —
+  but its FRAMING may quote an iconic composition of the target film.
 - **Canvas decides the film.** Sky/open space, side-lit shadow, close-up
-  skin, sparse interior — the take's big repaintable area is matched to the
-  film that repaints it (`take-design.md`).
-- **Delta check — warn when the look is soft.** The reveal is only as strong
-  as the distance between the take's own light and the film's look. If the
-  film is gentle (Her, Amélie-adjacent warmth, low-contrast naturalism) or
-  merely warms/cools what the take already has, say plainly: "this look is
-  soft — on this take the before/after will be weak." Then suggest 2–3
-  STRONGER films of the SAME PALETTE and ASK which the user wants: stay
-  soft, or go strong. Do not silently deliver a weak reveal; do not
-  silently swap the film.
+  skin, interior high angle — the take's big repaintable area is matched
+  to the film that repaints it (`take-design.md`).
+- **Delta check — warn when the look is soft.** If the film merely
+  warms/cools what the take already has (Her on soft window light), say
+  plainly that the before/after will be weak, suggest 2–3 STRONGER films of
+  the SAME PALETTE, and ASK: stay soft, or go strong. Never silently
+  deliver a weak reveal; never silently swap the film.
 - **Compare palettes, not temperatures.** "Same vibe" = same dominant hues
-  at the same lightness/saturation register (pastel peach-pink, dense amber,
-  cool blue-violet, sickly green, orange/teal) — never just "warm ↔ warm" or
-  "cool ↔ cool". Her (pastel peach, high-key) is NOT the family of Blade
-  Runner 2049 amber (dark dense orange) even though both are warm; its
-  stronger siblings are Euphoria and Spring Breakers (saturated pink/peach
-  light). Name the palette in words before proposing alternatives.
+  at the same lightness/saturation register (pastel peach-pink, dense
+  amber, cool blue-violet, sickly green, orange/teal) — never "warm ↔ warm".
+  Her (pastel peach, high-key) is NOT the family of Blade Runner 2049 amber;
+  its stronger siblings are Euphoria and Spring Breakers. Name the palette
+  in words before proposing alternatives.
 
-## Workflow
-1. **Inputs.** Target film/series (name or a still to analyze); footage
-   (file, frame or description) or none yet; single clip or series.
-   Run the **viability filter** on the film (`film-looks.md`).
-2. **Footage branch.**
-   - Has footage → extract/inspect a frame, list the visible elements and the
-     canvas it offers, check the film fits that canvas (redirect if not).
-   - No footage → design the take with `take-design.md`: real-recording
-     instructions, or an AI-generation prompt (see the ugc-craft skill for
-     talking-head anatomy) with the ungraded-look clauses. The edit prompt
-     is NOT written yet — deliver the take design plus the film's result
-     checks, and write the grade once the footage exists.
-3. **8-axis treatment.** Pull the film from `film-looks.md` or derive it
-   with `eight-axis.md` (from memory of the film or a supplied still).
-4. **Assemble** with the skeleton: treatment prose calibrated to the frame's
-   elements → preservation block → "ONLY change:". One dense block.
-5. **Deliver** the prompt plus two result checks specific to that look
-   (e.g. "the horizon must dissolve into haze", "skin must stay alive").
-6. **Iterate** with `troubleshooting.md`; a look that survives production
-   is appended to `film-looks.md` (ask before writing).
+## Workflow (director cut — the default)
+1. **Inputs.** Target film/series (name or a still); footage (file) or none
+   yet; single clip or series. Mode: director cut unless the user asked for
+   grade only. Run the **viability filter** and the **delta check**
+   (`film-looks.md`).
+2. **No footage yet?** Design the take with `take-design.md` (real recording
+   instructions, or an AI-generation prompt via the ugc-craft skill with the
+   ungraded-look clauses). Deliver the take design and the film's result
+   checks; the edit prompt is written once the footage exists.
+3. **Ingest.** Word-level timestamps: `python scripts/beats.py <video>`
+   (Whisper, local). Frames at 1–2 fps with ffmpeg. Read ALL frames
+   alongside the words.
+4. **Breakdown + shot list.** Table: time → spoken phrase → visual event.
+   Pick the director from the film (table in `director-cut.md`; derive from
+   memory or web search if absent — never ask the user to describe the
+   camera). Design the shot list in that grammar: cuts on phrase starts or
+   silences, ≥ ~2 s per shot, one dynamic move at most, scale rule on.
+5. **Checkpoint.** Show the breakdown and the shot list with cut times (and
+   the derived director row if new). Ask: accept or adjust? Wait.
+6. **8-axis treatment.** Pull the film from `film-looks.md` /
+   `prompt-skeleton.md` or derive with `eight-axis.md`; write it onto the
+   frame's real elements, including how the light sits in each framing.
+7. **Assemble** the hybrid skeleton in `director-cut.md`: CRITICAL (with the
+   scale + skin lines) → LIGHTING AND COLOR GRADE → CAMERA SEQUENCE →
+   RHYTHM → IMPERFECTIONS → CONTINUITY → FINAL FEEL. One block. Deliver with
+   two result checks specific to the look, and the usage line: upload the
+   base video alone into Seedance 2.5, paste, nothing else attached.
+8. **Iterate** with `troubleshooting.md` and the failure table in
+   `director-cut.md`. A look or director cut that survives production is
+   appended to the references (ask before writing).
 
-## Director cut mode (camera + grade, one prompt)
-When the user wants "the cameras/angles of the film too", "multicam +
-grading together", "edit it like [director] would shoot it": ingest the
-take (word timestamps via the cine-multicam skill's `beats.py`, frames at
-1 fps), design the shot list in the DIRECTOR's grammar (not the default
-arc), present the breakdown + shot list at a mandatory checkpoint, then fill
-the hybrid skeleton in `director-cut.md` — grade section + camera sequence
-in one block, base video as the only upload. Expect a restaging: the model
-extends the set to fit the director's compositions while person,
-performance and grade stay locked (the "only light" rule of grade-only
-mode does not apply to the environment here — it applies to the person).
-Scale rule: no camera ever frames the subject smaller than the base video
-does, no aerial/drone viewpoints — a dot-sized subject flips the model into
-pure generation and the performance is lost.
+**Grade-only (on request):** steps 1–2, then extract one or two frames,
+then steps 6 → assemble with `prompt-skeleton.md` (treatment prose →
+preservation block → "ONLY change:") → deliver with checks → iterate.
 
 ## Quick reference
 | Take canvas | Films that repaint it |
@@ -124,9 +131,13 @@ pure generation and the performance is lost.
 | Open space / sky, low horizon | Blade Runner 2049 (amber), Pulp Fiction, Mad Max |
 | Single-window side light, unfilled shadow | Moonlight, Se7en, Drive |
 | Frontal close-up, soft light, skin fills frame | The Matrix, Her |
-| Sparse institutional interior, high angle | The Matrix |
+| Interior, high angle over a table/desk | The Matrix, Only God Forgives |
+
+Director ↔ film pairs and the derivation method: `director-cut.md`.
 
 ## Red flags — stop and re-read the hard rules
+- You are writing a director cut and have not shown the checkpoint.
+- A shot frames the subject smaller than the base video, or from the air.
 - The prompt contains "replace", "recolor his", "add a [object]", "swap the".
 - You are about to tell the user to upload a still from the film.
 - The film needs its set to be recognized and you are trying anyway.
@@ -134,5 +145,4 @@ pure generation and the performance is lost.
 - The prompt never names an element that is actually in the frame.
 - The film only warms or cools the take's existing light and you haven't
   warned that the reveal will be weak.
-- You matched a "stronger" alternative by temperature (warm→warm) instead
-  of by palette (pastel peach → saturated pink/peach).
+- You matched a "stronger" alternative by temperature instead of palette.

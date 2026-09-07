@@ -1,4 +1,4 @@
-# Director cut: camera grammar + grade in ONE prompt
+# Director cut (DEFAULT MODE): camera grammar + grade in ONE prompt
 
 Production-validated (2026-09-06, live generation reviewed frame by frame): one raw take re-filmed by virtual moving
 cameras cut on the speech beats, in the director's own camera grammar, AND
@@ -20,16 +20,19 @@ is a restaging, not a filter: the take becomes a scene from the film.
 Write the wide shots as the director would compose them and let the model
 build the room to match; keep the identity and performance locks absolute.
 
-This mode borrows the cine-multicam skill's skeleton (load-bearing lines
-fixed) and adds two things: a LIGHTING AND COLOR GRADE section carrying the
+This mode uses the cine-multicam camera skeleton (load-bearing lines
+fixed, reproduced below — the cine-multicam skill is NOT required) and adds
+two things: a LIGHTING AND COLOR GRADE section carrying the
 8-axis treatment, and shot bodies that say how the new light sits in each
 framing.
 
 ## Inputs and ingest
-1. The raw take (local file). Word-level timestamps: run the cine-multicam
-   skill's `scripts/beats.py` on it (shared Whisper cache). Without that
-   skill, any word-level transcription works — cuts need word start/end
-   times and silences.
+1. The raw take (local file). Word-level timestamps: run this skill's
+   `scripts/beats.py <video>` (Whisper, local; first run `python
+   scripts/check_env.py` to check ffmpeg/whisper). It writes `<video
+   stem>.json` next to the video — the same cache the cine-multicam skill
+   uses, so the two never fork it. Cuts need word start/end times and
+   silences.
 2. Frames at 1 fps (`ffmpeg -vf fps=1`) — read ALL of them alongside the
    words. Cuts are motivated by both: phrase starts, silences, gestures,
    posture changes, lean-ins.

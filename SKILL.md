@@ -61,10 +61,8 @@ edit is forbidden from regenerating any physical element.
   into. Generic prompts produce generic tints.
 - **Honest before.** The raw take is ungraded, auto-exposure, neutral
   wardrobe, natural light, no portrait mode, no filter — but its FRAMING may
-  quote an iconic composition of the target film, and the ROOM should be the
-  user's real one with their own objects (desk, camera, plant, mug). Plain
-  light, real room: composition and personal props are free; colored light
-  and the film's props are not.
+  quote an iconic composition of the target film. Composition is free; light
+  and set dressing are not.
 - **Canvas decides the film.** Sky/open space, side-lit shadow, close-up
   skin, sparse interior — the take's big repaintable area is matched to the
   film that repaints it (`take-design.md`).

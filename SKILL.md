@@ -27,13 +27,13 @@ nothing but light changes.
 2. **`references/prompt-skeleton.md` — ALWAYS.** The grade written as prose
    (source of the GRADE section), the preservation block, validated grades;
    also the whole prompt for grade-only mode.
-3. **`references/eight-axis.md` — Step 5.** Decompose a look into 8 axes and
+3. **`references/eight-axis.md` — Step 6.** Decompose a look into 8 axes and
    write each onto the frame.
-4. **`references/film-looks.md` — Steps 1 and 5.** Viability filter,
+4. **`references/film-looks.md` — Steps 1 and 6.** Viability filter,
    validated / approved / rejected films, palette families, delta check.
 5. **`references/take-design.md` — only when** the user has no footage yet,
    or is planning a multi-film series.
-6. **`references/troubleshooting.md` — Step 8.** Defect → countermeasure.
+6. **`references/troubleshooting.md` — Step 9.** Defect → countermeasure.
 
 ## Hard rules (never break)
 - **The film must live in light.** Only films whose look is lighting and
@@ -99,31 +99,35 @@ nothing but light changes.
    instructions, or an AI-generation prompt via the ugc-craft skill with the
    ungraded-look clauses). Deliver the take design and the film's result
    checks; the edit prompt is written once the footage exists.
-3. **Ingest.** Word-level timestamps: `python scripts/beats.py <video>`
+3. **Preflight (first run in a session).** `python scripts/check_env.py`
+   checks Python, ffmpeg/ffprobe and Whisper. Relay anything missing with
+   its install command and ask before installing; never guess around a
+   missing tool.
+4. **Ingest.** Word-level timestamps: `python scripts/beats.py <video>`
    (Whisper, local; note its EDGES line — a tail silence is a usable hold).
    Frames with ffmpeg: 2 fps for clips up to 10 s, 1 fps above. Read ALL
    frames alongside the words.
-4. **Breakdown + shot list.** Table: time → spoken phrase → visual event.
+5. **Breakdown + shot list.** Table: time → spoken phrase → visual event.
    Pick the director from the film (table in `director-cut.md`; derive from
    memory or web search if absent — never ask the user to describe the
    camera). Design the shot list in that grammar: cuts on phrase starts or
    silences, ≥ ~2 s per shot, one dynamic move at most, scale rule on.
-5. **Checkpoint.** Show the breakdown and the shot list with cut times (and
+6. **Checkpoint.** Show the breakdown and the shot list with cut times (and
    the derived director row if new). Ask: accept or adjust? Wait.
-6. **8-axis treatment.** Pull the film from `film-looks.md` /
+7. **8-axis treatment.** Pull the film from `film-looks.md` /
    `prompt-skeleton.md` or derive with `eight-axis.md`; write it onto the
    frame's real elements, including how the light sits in each framing.
-7. **Assemble** the hybrid skeleton in `director-cut.md`: CRITICAL (with the
+8. **Assemble** the hybrid skeleton in `director-cut.md`: CRITICAL (with the
    scale + skin lines) → LIGHTING AND COLOR GRADE → CAMERA SEQUENCE →
    RHYTHM → IMPERFECTIONS → CONTINUITY → FINAL FEEL. One block. Deliver with
    two result checks specific to the look, and the usage line: upload the
    base video alone into Seedance 2.5, paste, nothing else attached.
-8. **Iterate** with `troubleshooting.md` and the failure table in
+9. **Iterate** with `troubleshooting.md` and the failure table in
    `director-cut.md`. A look or director cut that survives production is
    appended to the references (ask before writing).
 
 **Grade-only (on request):** steps 1–2, then extract one or two frames,
-then steps 6 → assemble with `prompt-skeleton.md` (treatment prose →
+then step 6 → assemble with `prompt-skeleton.md` (treatment prose →
 preservation block → "ONLY change:") → deliver with checks → iterate.
 
 ## Quick reference

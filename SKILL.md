@@ -94,7 +94,11 @@ nothing but light changes.
 1. **Inputs.** Target film/series (name or a still); footage (file) or none
    yet; single clip or series. Mode: director cut unless the user asked for
    grade only. Run the **viability filter** and the **delta check**
-   (`film-looks.md`).
+   (`film-looks.md`). With a still or a clip of the film,
+   `python "<this skill's base directory>/scripts/measure_look.py" <take> <film still>`
+   measures both looks (hue, saturation, black level, contrast) and gives the
+   delta check a verdict instead of a guess (its thresholds are starting
+   values: if the verdict surprises you, look at the frames).
 2. **No footage yet?** Design the take with `take-design.md` (real recording
    instructions, or an AI-generation prompt via the ugc-craft skill with the
    ungraded-look clauses). Deliver the take design and the film's result
@@ -105,8 +109,12 @@ nothing but light changes.
    missing tool.
 4. **Ingest.** Word-level timestamps: `python scripts/beats.py <video>`
    (Whisper, local; note its EDGES line — a tail silence is a usable hold).
-   Frames with ffmpeg: 2 fps for clips up to 10 s, 1 fps above. Read ALL
-   frames alongside the words.
+   Frames as two contact sheets, never one image per frame: 2 fps for
+   clips up to 10 s, 1 fps above (command in `director-cut.md`); read
+   both sheets alongside the words. Seedance 2.5 generates up to 30 s
+   (confirmed 2026-09-26); other 2.5 specs are unverified. beats.py
+   flags longer takes (LONG_VIDEO), so design for the strongest 30 s
+   window.
 5. **Breakdown + shot list.** Table: time → spoken phrase → visual event.
    Pick the director from the film (table in `director-cut.md`; derive from
    memory or web search if absent — never ask the user to describe the
@@ -119,12 +127,18 @@ nothing but light changes.
    frame's real elements, including how the light sits in each framing.
 8. **Assemble** the hybrid skeleton in `director-cut.md`: CRITICAL (with the
    scale + skin lines) → LIGHTING AND COLOR GRADE → CAMERA SEQUENCE →
-   RHYTHM → IMPERFECTIONS → CONTINUITY → FINAL FEEL. One block. Deliver with
+   RHYTHM → IMPERFECTIONS → CONTINUITY → FINAL FEEL. One block. Save it as
+   `<video basename>_cine_grade_prompt.txt` next to the video and run
+   `python "<this skill's base directory>/scripts/verify_director_cut.py" "<prompt.txt>" --duration <seconds>`;
+   it must print `PASS` (fix and re-run on `FAIL`). Deliver with
    two result checks specific to the look, and the usage line: upload the
    base video alone into Seedance 2.5, paste, nothing else attached.
 9. **Iterate** with `troubleshooting.md` and the failure table in
    `director-cut.md`. A look or director cut that survives production is
-   appended to the references (ask before writing).
+   appended to the references (ask before writing). To check a result in
+   numbers, run `measure_look.py <generated video> <film still> --role result`:
+   it names the axes that are off and the `troubleshooting.md` reinforcement
+   for each.
 
 **Grade-only (on request):** steps 1–2, then extract one or two frames,
 then step 6 → assemble with `prompt-skeleton.md` (treatment prose →

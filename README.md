@@ -47,6 +47,8 @@ Everything runs locally. Whisper is multilingual — speak any language; the pro
 - `references/take-design.md` — the honest "before": canvas, framing quotes, AI-generated takes, series planning.
 - `references/troubleshooting.md` — defect → countermeasure.
 - `scripts/beats.py` — local word-level transcription (Whisper) + silences + first-guess cut points.
+- `scripts/verify_director_cut.py`: self-check for the director-cut prompt: section order, the load-bearing skeleton lines, chained timecodes, one dynamic move, the scale rule.
+- `scripts/measure_look.py`: measures hue, saturation, black level and contrast of your take and of a still of the target film, for the delta check, and compares a generated result with the target. ffmpeg only.
 - `scripts/check_env.py` — preflight dependency check.
 - `requirements.txt` — the single Python dependency.
 

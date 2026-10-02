@@ -4,6 +4,10 @@ Ask the user to describe the defect in one line, then reinforce the matching
 clause and re-run. Reinforcements are ADDED to the treatment prose, before
 the preservation block.
 
+To check a result in numbers first, run `scripts/measure_look.py <generated video> <film still> --role result`:
+it names the axes that are off (hue, saturation, black level, contrast, pure white) and which
+reinforcement below fits each.
+
 | Symptom | Reinforce with |
 |---|---|
 | Just a color tint, no depth or haze | "Atmospheric perspective must be strong: the horizon MUST almost dissolve into glowing light, far hazier than the foreground" |

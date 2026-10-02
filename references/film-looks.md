@@ -43,6 +43,9 @@ signature to the canvas before switching films.
 | **Wes Anderson / Jeunet / Wong Kar-wai in general** | production-design auteurs — steer to a light-based look with the same mood |
 
 ## Delta check: soft looks make weak reveals
+With a still or a clip of the film, `scripts/measure_look.py <take> <film still>`
+measures both looks (hue, saturation, black level, contrast) and prints a SOFT,
+MODERATE or STRONG verdict; run it before warning, so the warning rests on numbers.
 A grade that keeps the take's color family (warm window light → warmer
 window light) changes little on screen. Warn, then offer stronger films of
 the same vibe and let the user choose. "Same vibe" means the same COLOR

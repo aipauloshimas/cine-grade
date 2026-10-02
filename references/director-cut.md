@@ -33,8 +33,23 @@ framing.
    stem>.json` next to the video — the same cache the cine-multicam skill
    uses, so the two never fork it. Cuts need word start/end times and
    silences.
-2. Frames: 2 fps for clips up to 10 s (`ffmpeg -vf fps=2`), 1 fps above
-   that — read ALL of them alongside the words. Cuts are motivated by both:
+2. Frames, as two contact sheets (5 columns by 3 rows, one tile per
+   sample, 15 tiles a sheet): 2 fps for clips up to 10 s, 1 fps above
+   (use `fps=1` in the command below for those).
+   ```bash
+   mkdir -p "<video dir>/frames_grade_<video-slug>" && ffmpeg -y -loglevel error -i "<video>" -vf "fps=2,scale=320:480:force_original_aspect_ratio=decrease,tile=5x3:padding=4:color=white" -frames:v 2 "<video dir>/frames_grade_<video-slug>/sheet_%d.jpg"
+   ```
+   Read both sheets alongside the words. Tiles run left to right, top to
+   bottom: tile n is at (n-1)/fps seconds, and sheet 2 continues where
+   sheet 1 stops (30 tiles in all: 15 s at 2 fps, 30 s at 1 fps; for a
+   longer clip add `-ss <window start>` before `-i`). Do not label tiles
+   with `drawtext`: it needs a font file and crashed ffmpeg without one on
+   the Windows build tested on 2026-10-02. Open single frames only where
+   a sheet cannot settle a cut:
+   ```bash
+   ffmpeg -y -ss <T> -i "<video>" -frames:v 1 -q:v 2 "<video dir>/frames_grade_<video-slug>/zoom_<T>s.jpg"
+   ```
+   Cuts are motivated by the words and the frames together:
    phrase starts, silences, gestures, posture changes, lean-ins. beats.py's
    EDGES line reports the lead-in and the tail silence: a tail ≥ 0.25 s is a
    usable hold for the final shot.
@@ -183,10 +198,15 @@ dark desaturated maroon under the green cast" — never keep their full
 color (breaks the cast) and never get removed (breaks preservation).
 
 ## Verifier
-`cine-multicam/scripts/verify_prompt.py` does not apply to director-cut
-prompts (it rejects the LIGHTING AND COLOR GRADE section and 3-shot lists).
-Verify by hand: timecodes chained to one decimal summing to the duration,
-one dynamic move at most, negatives list intact, no sibling tokens.
+`scripts/verify_director_cut.py <prompt.txt> --duration <seconds>` checks a
+director-cut prompt before it is delivered. (cine-multicam's verifier does
+not apply: it rejects the LIGHTING AND COLOR GRADE section and 3-shot lists.)
+It checks the section order, the load-bearing skeleton lines (read from the
+skeleton above at run time, so a change there is followed), the negatives list,
+timecodes chained to one decimal summing to the duration, one dynamic move at
+most, the count in "Use N distinct shots" and "Imagine N real cameras", the
+scale rule and no sibling tokens. It must print `PASS`; fix and re-run on
+`FAIL`.
 
 ## Checkpoint (mandatory, from cine-multicam)
 Present the breakdown table and the director shot list with cut times BEFORE

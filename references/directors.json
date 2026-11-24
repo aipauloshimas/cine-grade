@@ -1,0 +1,122 @@
+{
+  "_readme": "Source of truth for director camera grammars. references/director-cut.md shows the same data as a table (regenerate it with: python scripts/verify_director_cut.py --print-table). Matching is case-insensitive and by word prefix, so 'symmetr' matches 'symmetrical'. 'moves' = keyword phrases that mark a move this director uses; 'never' = keyword phrases for moves this director avoids (the verifier FAILS a shot that uses one, unless it is negated, e.g. 'no handheld'). 'cuts' = very few | few | medium | medium-high. Add a derived director by appending a row with \"derived\": true (see director-cut.md, 'Director not in the table').",
+  "directors": [
+    {
+      "name": "Nicolas Winding Refn",
+      "aliases": ["Refn", "Nicolas Winding Refn"],
+      "films": ["Only God Forgives", "Drive"],
+      "moves": ["frontal", "symmetr", "tableau", "dolly", "straight push", "push in", "locked", "static", "does not move", "hold", "impassive", "descent", "descend", "rise", "rising"],
+      "never": ["handheld", "arcing", "arc around", "orbit", "whip"],
+      "cuts": "very few",
+      "notes": "Frontal symmetrical tableaux, glacial straight dolly-ins, impassive long holds through silences, one slow straight descent or rise. About 3 shots in 5 s."
+    },
+    {
+      "name": "Denis Villeneuve / Roger Deakins",
+      "aliases": ["Villeneuve", "Deakins", "Denis Villeneuve", "Roger Deakins"],
+      "films": ["Blade Runner 2049", "Dune"],
+      "moves": ["locked", "monumental", "wide", "slow push", "push", "crane", "reveal", "does not move", "static", "glacial"],
+      "never": ["fast push", "fast move", "crash", "whip", "snap zoom", "handheld"],
+      "cuts": "few",
+      "notes": "Monumental locked wides, subject small then large, extremely slow push, one crane reveal of scale. Mind the scale rule: monumental scale comes from stillness and depth, never from framing the subject smaller than the base video."
+    },
+    {
+      "name": "Barry Jenkins",
+      "aliases": ["Barry Jenkins", "Jenkins"],
+      "films": ["Moonlight", "If Beale Street Could Talk"],
+      "moves": ["handheld", "close-up", "circl", "gaze", "direct to the lens", "straight into the lens", "shallow", "skin", "linger", "breath"],
+      "never": ["locked symmetr", "dead-center", "dead-centre", "planimetric", "symmetrical tableau"],
+      "cuts": "medium",
+      "notes": "Intimate handheld close-ups, slow circling, direct-to-lens gaze, shallow depth, lingering on skin."
+    },
+    {
+      "name": "The Wachowskis",
+      "aliases": ["Wachowski", "Wachowskis", "Lana Wachowski", "Lilly Wachowski"],
+      "films": ["The Matrix"],
+      "moves": ["dolly", "surveillance", "high angle", "descent", "descend", "overhead", "top-down", "top down", "push", "straight"],
+      "never": ["handheld"],
+      "cuts": "medium",
+      "notes": "Precise dolly, surveillance high angle descending to eye level, overhead top-down (usually dropped by the scale rule on a standing take), one slow push on the subject."
+    },
+    {
+      "name": "David Fincher",
+      "aliases": ["Fincher", "David Fincher"],
+      "films": ["Se7en", "Zodiac"],
+      "moves": ["locked", "low", "precise", "minimal", "dolly", "push", "reframe", "static", "does not move"],
+      "never": ["operator breathing", "breathing frame", "handheld breath"],
+      "cuts": "medium",
+      "notes": "Locked-off, low and precise, minimal reframes, slow dolly, cuts on action."
+    },
+    {
+      "name": "Quentin Tarantino",
+      "aliases": ["Tarantino", "Quentin Tarantino"],
+      "films": ["Pulp Fiction"],
+      "moves": ["trunk", "low angle", "static", "two-shot", "locked", "push", "hard cut", "does not move"],
+      "never": ["drift"],
+      "cuts": "medium",
+      "notes": "Trunk-shot low angle, long static two-shots, one slow push, hard cuts on lines."
+    },
+    {
+      "name": "Sam Levinson",
+      "aliases": ["Levinson", "Sam Levinson"],
+      "films": ["Euphoria"],
+      "moves": ["circl", "steadicam", "glossy", "hold", "close", "colored light", "coloured light", "skin", "in and out", "glid"],
+      "never": ["static wide", "locked wide", "locked-off wide"],
+      "cuts": "medium-high",
+      "notes": "Circling steadicam, long glossy holds, in-and-out of colored light, close on skin."
+    },
+    {
+      "name": "Stanley Kubrick",
+      "aliases": ["Kubrick", "Stanley Kubrick"],
+      "films": ["The Shining", "2001: A Space Odyssey"],
+      "moves": ["one-point", "symmetr", "zoom", "steadicam", "glid", "hold", "centred", "centered", "centre", "center", "relentless"],
+      "never": ["handheld", "shake", "off-center", "off-centre"],
+      "cuts": "few",
+      "notes": "One-point-perspective symmetry, slow relentless zoom in or out, steadicam gliding behind or ahead of the subject, long holds."
+    },
+    {
+      "name": "Paul Thomas Anderson",
+      "aliases": ["Paul Thomas Anderson", "PTA"],
+      "films": ["Boogie Nights", "Licorice Pizza"],
+      "moves": ["steadicam", "follow", "whip", "push", "flow", "tracking", "track", "glid"],
+      "never": ["locked symmetr", "dead-center", "dead-centre", "planimetric"],
+      "cuts": "medium",
+      "notes": "Long flowing steadicam follows, whip pans between subjects, slow push on a face, 35 mm warmth."
+    },
+    {
+      "name": "Martin Scorsese",
+      "aliases": ["Scorsese", "Martin Scorsese"],
+      "films": ["Goodfellas", "The Irishman"],
+      "moves": ["tracking", "track", "follow", "lead", "push", "freeze", "hold", "whip", "reaction", "detail"],
+      "never": ["static tableau", "tableau", "locked symmetr"],
+      "cuts": "medium-high",
+      "notes": "Tracking shot following or leading the subject, fast push-ins on a reaction, freeze-like holds, whip to detail."
+    },
+    {
+      "name": "Christopher Nolan",
+      "aliases": ["Nolan", "Christopher Nolan"],
+      "films": ["Interstellar", "Oppenheimer"],
+      "moves": ["large-format", "large format", "imax", "locked", "handheld", "push", "hard cut", "close-up", "wide", "does not move", "profile"],
+      "never": ["circl", "orbit", "glossy", "steadicam glid"],
+      "cuts": "medium",
+      "notes": "Large-format locked wides, handheld intimacy on faces, slow push, cuts on action, no ornament."
+    },
+    {
+      "name": "Wes Anderson",
+      "aliases": ["Wes Anderson"],
+      "films": ["The Grand Budapest Hotel", "Moonrise Kingdom"],
+      "moves": ["symmetr", "dead-center", "dead-centre", "dead centre", "dead center", "planimetric", "90", "whip", "lateral", "tracking", "snap zoom"],
+      "never": ["diagonal", "dutch"],
+      "cuts": "medium",
+      "notes": "Grammar only: his look is rejected by the light filter. Dead-center symmetry, planimetric 90 degree angles, whip pans, lateral tracking, snap zooms."
+    },
+    {
+      "name": "Gaspar Noe",
+      "aliases": ["Gaspar Noe", "Gaspar Noé", "Noé", "Noe"],
+      "films": ["Enter the Void", "Climax"],
+      "moves": ["float", "drift", "rotat", "overhead", "unbroken", "glid", "colored light", "coloured light", "slow"],
+      "never": ["locked-off", "static tableau"],
+      "cuts": "very few",
+      "notes": "Floating disembodied camera, slow rotations and overheads, long unbroken drifts through colored light. His real grammar avoids hard cuts, but a director cut always needs 2+ shots joined by clean hard cuts, so that ban is not machine-checked. Mind the scale rule on overheads."
+    }
+  ]
+}

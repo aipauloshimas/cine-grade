@@ -57,6 +57,12 @@ framing.
    (`film-looks.md` / `eight-axis.md`).
 
 ## Director camera grammars (pick the film's director, never the default arc)
+**`references/directors.json` is the source of truth** (per director: `name`, `aliases`, `films`, `moves`, `never`,
+`cuts`, `notes`). The table below is the human view of the same data: when one changes, change the other (the
+table is regenerated with `python scripts/verify_director_cut.py --print-table`). The verifier reads the json:
+it FAILS a shot that uses a move in the director's `never` list and WARNS when a shot uses none of the director's
+`moves` and is not tagged `(derived: <reason>)`.
+
 | Director / film | Camera grammar | Cut count | Never |
 |---|---|---|---|
 | **Refn** (Only God Forgives, Drive) | frontal symmetrical tableaux, glacial straight dolly-ins, impassive long holds through silences, one slow straight descent/rise | very few (3 in 5 s) | handheld, arcs, whips |
@@ -92,6 +98,28 @@ new table row and simply state it at the checkpoint ("Here is how I read
 [director]'s camera: …") alongside the shot list; the user corrects only if
 they disagree. The scale rule and the ≥2 s / one-dynamic-move rules still
 apply.
+
+**Derived-director row (output format of the six points).** Once the user
+accepts it, append it to `references/directors.json` (and a row to the table
+above) so the next run, and the verifier, know it:
+```json
+{
+  "name": "George Miller",
+  "aliases": ["Miller", "George Miller"],
+  "films": ["Mad Max: Fury Road"],
+  "moves": ["dead centre", "handheld", "crash push", "low angle"],
+  "never": ["slow drift", "orbit"],
+  "cuts": "medium-high",
+  "notes": "Points 1-6 in one line each: low angle, centre-framed; handheld engine buzz; fast cuts; wide + close; signature = the crash push; never a lazy drift.",
+  "derived": true
+}
+```
+`moves` are the keyword phrases of points 1, 2 and 5; `never` are those of
+point 6. While a director is not in the file, the verifier only prints
+"director not in directors.json: derive its grammar with the six-point
+method and tag derived moves", and every shot whose move comes from your
+derivation carries `(derived: <reason>)` in its header (and in the checkpoint
+shot list).
 
 ### Rows are written against one reference scene — adapt them to the take
 A grammar row (the Wachowskis' seated interrogation, Refn's table tableau)
@@ -137,10 +165,49 @@ CONTINUITY — ABSOLUTELY CRITICAL
 Every shot represents the exact chronological moment occurring in the BASE VIDEO. Nothing resets because of a camera cut. Actions and gestures never repeat. Object interactions never restart. Dialogue and audio never restart. When [his] face is visible, [his] mouth matches the exact words at that timestamp. When [his] face is out of frame, [his] original voice continues normally. All shots respect the original screen direction: [his] eyeline stays consistent, and camera positions never flip [him] to the opposite side of the frame in a disorienting way. The lighting and color grade are identical in every shot. Imagine [N] real cameras filming the SAME performance simultaneously in the SAME [color]-lit room and the editor simply switching between them.
 
 FINAL FEEL
-[Director tone sentence.] The camera should enhance the performance, never compete with it.
+[Director tone sentence, naming the director: "..., in <Director>'s grammar: ...".] The camera should enhance the performance, never compete with it.
 Same scene. Same person. Same performance. Same dialogue. Same voice. Same timing. ONLY THE CINEMATOGRAPHY AND THE LIGHTING CHANGE.
 No new dialogue. No replacement voice. No silent montage. No new actions, characters or objects. No added props, lamps or set dressing. No camera equipment, rigs or crew visible in frame. No music. No subtitles. No identity drift. No face changes, beautification or artificial skin. No slow motion. No speed ramps. No time remapping.
 ```
+
+### Silent clip (no speech): same skeleton, silent lines
+
+A clip with no speech is still a director cut: **2 or more shots, joined by
+clean hard cuts, in the director's grammar** — never one continuous take,
+never one generic move for every film. Only the speech-bound lines change.
+The cut points sit on ACTION beats instead of words: a head turn, a look into
+the lens, a gesture start, a hand setting something down, a step. Find them on
+the contact sheets (note the tile time of each beat), keep every shot at about
+2 s or more, and write the beats with their times in one extra CRITICAL line
+("The silent action, exactly as in the base video: ... at about 0.2 s ... at
+about 2.3 s ..."). If the whole clip is shorter than about 4 s, two shots with
+one cut on the strongest beat is the design, not a single take.
+
+Run the verifier with `--silent`. These pairs are the ONE place the silent
+lines are defined (the verifier reads this block): in a silent clip each
+`speech:` sentence of the skeleton is replaced by its `silent:` sentence,
+slots in `[brackets]` as in the skeleton, every other skeleton line unchanged.
+```
+speech: The ORIGINAL AUDIO must continue seamlessly across every cut.
+silent: There is no speech and no audio in this clip: the BASE VIDEO is a silent, wordless moment, and the result stays silent.
+speech: The [man] must CONTINUE SPEAKING throughout the entire video exactly as in the original base video.
+silent: The [man] must CONTINUE [his] SILENT PERFORMANCE throughout the entire video exactly as in the original base video.
+speech: Preserve [his] exact dialogue, voice, timing, lip sync, expressions, gestures and body movement.
+silent: Preserve [his] exact silence, timing, breathing, closed relaxed mouth, expressions, gestures and body movement.
+speech: Think of this as ONE uninterrupted speaking performance filmed simultaneously by several different cameras, in a room that is now lit completely differently.
+silent: Think of this as ONE uninterrupted silent performance filmed simultaneously by several different cameras, in a room that is now lit completely differently.
+speech: Dialogue and audio never restart.
+silent: No dialogue and no audio ever appear.
+speech: When [his] face is visible, [his] mouth matches the exact words at that timestamp.
+silent: [His] face is visible in every frame, and [his] mouth matches the base video at every timestamp: closed and relaxed, never forming words.
+speech: When [his] face is out of frame, [his] original voice continues normally.
+silent: [His] face never leaves the frame.
+speech: No silent montage.
+silent: No montage.
+```
+In FINAL FEEL's negatives a silent clip also adds "No sound effects. No mouthed
+words." (not enforced by the verifier). In the shot bodies never write speech
+("he says his line"): anchor each cut to the action beat.
 
 ## Validated example — Refn / Only God Forgives on a 5.04 s take
 Raw scene: seated at a plain white table in an empty room, phone propped
@@ -185,7 +252,7 @@ CONTINUITY — ABSOLUTELY CRITICAL
 Every shot represents the exact chronological moment occurring in the BASE VIDEO. Nothing resets because of a camera cut. Actions and gestures never repeat. Object interactions never restart. Dialogue and audio never restart. When his face is visible, his mouth matches the exact words at that timestamp. When his face is out of frame, his original voice continues normally. All shots respect the original screen direction: his eyeline stays consistent, and camera positions never flip him to the opposite side of the frame in a disorienting way. The lighting and color grade are identical in every shot. Imagine 3 real cameras filming the SAME performance simultaneously in the SAME red-lit room and the editor simply switching between them.
 
 FINAL FEEL
-Slow, hypnotic, formally rigid — every frame composed like a symmetrical painting drowned in red and black, the camera moving only in straight glacial lines, holding on stillness longer than feels comfortable. The camera should enhance the performance, never compete with it.
+Slow, hypnotic, formally rigid, in Refn's grammar: every frame composed like a symmetrical painting drowned in red and black, the camera moving only in straight glacial lines, holding on stillness longer than feels comfortable. The camera should enhance the performance, never compete with it.
 Same scene. Same person. Same performance. Same dialogue. Same voice. Same timing. ONLY THE CINEMATOGRAPHY AND THE LIGHTING CHANGE.
 No new dialogue. No replacement voice. No silent montage. No new actions, characters or objects. No added props, lamps or set dressing. No camera equipment, rigs or crew visible in frame. No music. No subtitles. No identity drift. No face changes, beautification or artificial skin. No slow motion. No speed ramps. No time remapping.
 ```
@@ -198,20 +265,48 @@ dark desaturated maroon under the green cast" — never keep their full
 color (breaks the cast) and never get removed (breaks preservation).
 
 ## Verifier
-`scripts/verify_director_cut.py <prompt.txt> --duration <seconds>` checks a
-director-cut prompt before it is delivered. (cine-multicam's verifier does
+`scripts/verify_director_cut.py <prompt.txt> --duration <seconds> [--silent]
+[--director "<name>"]` checks a director-cut prompt before it is delivered.
+Several files at once (`a.txt b.txt c.txt ...`) also compares the CAMERA
+SEQUENCE sections pairwise and warns on near-identical ones. (cine-multicam's verifier does
 not apply: it rejects the LIGHTING AND COLOR GRADE section and 3-shot lists.)
 It checks the section order, the load-bearing skeleton lines (read from the
 skeleton above at run time, so a change there is followed), the negatives list,
 timecodes chained to one decimal summing to the duration, one dynamic move at
 most, the count in "Use N distinct shots" and "Imagine N real cameras", the
-scale rule and no sibling tokens. It must print `PASS`; fix and re-run on
-`FAIL`.
+scale rule and no sibling tokens. It also FAILS generic or single-take wording
+("one continuous take", "single take", "no cut", "machine", "robot...") and a
+CAMERA RHYTHM without "Use N distinct shots", and FAILS a shot that uses a
+move on the named director's `never` list (`directors.json`); it WARNS when
+FINAL FEEL names no director or a shot uses none of the director's `moves`
+without a `(derived: <reason>)` tag. `--silent` checks the silent lines of
+"Silent clip" above instead of the speech lines (a prompt that says the clip
+has no speech and fails on a speech line gets that hint). It must print
+`PASS`; fix and re-run on `FAIL`.
 
 ## Checkpoint (mandatory, from cine-multicam)
 Present the breakdown table and the director shot list with cut times BEFORE
 filling the skeleton; ask the user to accept or adjust the cuts and the
 director grammar. Never ship unchecked.
+
+**The shot list shows where every move comes from.** One block per film:
+the director, then each shot with its time range, its cut point (a spoken
+word, or for a clip without speech an action beat), the move, and the SOURCE
+of that move: either `table: <Director> — <move as in directors.json>` or
+`derived: <reason>`. A shot whose move has no source is not allowed (the user
+cannot tell a real grammar from an invented one). Two films in the same batch
+must not share a move or a sequence; if they would, one of them is wrong.
+Example (the validated Refn cut above, a 5.04 s clip with speech):
+```
+Only God Forgives — Refn
+ 1. 00:00.0-00:02.0 | cut: opens on the take | move: glacial straight dolly in, frontal, centered | source: table: Refn — glacial straight dolly-ins
+ 2. 00:02.0-00:03.8 | cut: start of the second phrase | move: locked frontal close-up, long hold | source: table: Refn — impassive long holds
+ 3. 00:03.8-00:05.0 | cut: start of the closer, he rises | move: high angle descending straight to eye level | source: table: Refn — one slow straight descent/rise (high start derived: the take is filmed from a high phone angle)
+```
+For a silent clip the cut column names the action beat and its time
+("cut: head turns back to the lens, 2.2 s"). If the director is new, add the
+six-point reading and the `directors.json` row (see "Director not in the
+table").
 
 ## Watch for (failure modes, different fixes)
 | Symptom | Fix |

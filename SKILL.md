@@ -23,7 +23,8 @@ nothing but light changes.
 
 ## Read these
 1. **`references/director-cut.md` — ALWAYS.** The default mode: director
-   camera grammars, the hybrid skeleton, the scale rule, a validated example.
+   camera grammars (data in `references/directors.json`), the hybrid
+   skeleton, the silent-clip lines, the scale rule, a validated example.
 2. **`references/prompt-skeleton.md` — ALWAYS.** The grade written as prose
    (source of the GRADE section), the preservation block, validated grades;
    also the whole prompt for grade-only mode.
@@ -53,8 +54,13 @@ nothing but light changes.
   dot-sized subject flips the model into pure generation and the whole clip
   comes back stiff and plastic. Hype comes from movement, not scale.
 - **Checkpoint before the prompt (director cut).** Present the breakdown
-  table and the director shot list with cut times, ask "accept or adjust?",
-  and wait. Never ship a director cut unchecked.
+  table and the director shot list with cut times AND the source of every
+  move (`table: <Director> — <move>` or `derived: <reason>`), ask "accept or
+  adjust?", and wait. Never ship a director cut unchecked.
+- **A director cut always cuts.** 2 or more shots joined by clean hard cuts,
+  each in the director's own grammar, even for a clip with no speech (cut on
+  action beats). Never "one continuous take", never one generic move
+  ("machine precision") reused across films.
 - **A film can have more than one light signature.** Pick the one that
   matches the canvas (Blade Runner 2049 = amber Vegas exterior OR cyan LA
   interior), deriving it with `eight-axis.md` if the library only holds the
@@ -111,17 +117,28 @@ nothing but light changes.
    (Whisper, local; note its EDGES line — a tail silence is a usable hold).
    Frames as two contact sheets, never one image per frame: 2 fps for
    clips up to 10 s, 1 fps above (command in `director-cut.md`); read
-   both sheets alongside the words. Seedance 2.5 generates up to 30 s
+   both sheets alongside the words. **A clip with no speech** has no words
+   to cut on: note the ACTION beats instead (a head turn, a look into the
+   lens, a gesture start) with the tile time of each, and use `--silent`
+   at the verifier (`director-cut.md`, "Silent clip"). Seedance 2.5 generates up to 30 s
    (confirmed 2026-09-26); other 2.5 specs are unverified. beats.py
    flags longer takes (LONG_VIDEO), so design for the strongest 30 s
    window.
-5. **Breakdown + shot list.** Table: time → spoken phrase → visual event.
-   Pick the director from the film (table in `director-cut.md`; derive from
+5. **Breakdown + shot list.** Table: time → spoken phrase (or, for a
+   silent clip, action beat) → visual event. Pick the director from the film
+   (`references/directors.json`, human view in `director-cut.md`; derive from
    memory or web search if absent — never ask the user to describe the
    camera). Design the shot list in that grammar: cuts on phrase starts or
-   silences, ≥ ~2 s per shot, one dynamic move at most, scale rule on.
-6. **Checkpoint.** Show the breakdown and the shot list with cut times (and
-   the derived director row if new). Ask: accept or adjust? Wait.
+   silences (silent clip: on action beats), at least 2 shots, ≥ ~2 s per
+   shot, one dynamic move at most, scale rule on. Each shot's move comes
+   from the director's `moves`, or is marked derived with its reason; never
+   pick one move for several films.
+6. **Checkpoint.** Show the breakdown and the shot list, one block per film
+   in the mandatory format of `director-cut.md` ("Checkpoint"): director,
+   then per shot the time range, the cut point (speech word or action beat),
+   the move and its source, `table: <Director> — <move>` or `derived:
+   <reason>` (plus the derived director row if new). Ask: accept or adjust?
+   Wait.
 7. **8-axis treatment.** Pull the film from `film-looks.md` /
    `prompt-skeleton.md` or derive with `eight-axis.md`; write it onto the
    frame's real elements, including how the light sits in each framing.
@@ -129,8 +146,11 @@ nothing but light changes.
    scale + skin lines) → LIGHTING AND COLOR GRADE → CAMERA SEQUENCE →
    RHYTHM → IMPERFECTIONS → CONTINUITY → FINAL FEEL. One block. Save it as
    `<video basename>_cine_grade_prompt.txt` next to the video and run
-   `python "<this skill's base directory>/scripts/verify_director_cut.py" "<prompt.txt>" --duration <seconds>`;
-   it must print `PASS` (fix and re-run on `FAIL`). Deliver with
+   `python "<this skill's base directory>/scripts/verify_director_cut.py" "<prompt.txt>" --duration <seconds>`
+   (add `--silent` for a clip without speech; `--director "<name>"` if
+   FINAL FEEL does not name it; several prompts of one batch at once also
+   compares their camera sections); it must print `PASS` (fix and re-run on
+   `FAIL`; read the WARNINGs). Deliver with
    two result checks specific to the look, and the usage line: upload the
    base video alone into Seedance 2.5, paste, nothing else attached.
 9. **Iterate** with `troubleshooting.md` and the failure table in
@@ -156,6 +176,11 @@ Director ↔ film pairs and the derivation method: `director-cut.md`.
 
 ## Red flags — stop and re-read the hard rules
 - You are writing a director cut and have not shown the checkpoint.
+- Two or more films in a batch share the same camera move or sequence.
+- A director-cut prompt has no cut ("one continuous take", "no cut", a
+  single shot block), including for a clip with no speech.
+- A shot's move has no source in the checkpoint shot list (neither
+  `table: ...` nor `derived: ...`).
 - A shot frames the subject smaller than the base video, or from the air.
 - The prompt contains "replace", "recolor his", "add a [object]", "swap the".
 - You are about to tell the user to upload a still from the film.
